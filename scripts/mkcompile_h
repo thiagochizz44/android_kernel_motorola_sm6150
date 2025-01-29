@@ -8,6 +8,9 @@ PREEMPT=$4
 CC=$5
 LD=$6
 
+LINUX_COMPILE_BY="diasthiago"
+LINUX_COMPILE_HOST="CachyOS"
+
 vecho() { [ "${quiet}" = "silent_" ] || echo "$@" ; }
 
 # If compile.h exists already and we don't own autoconf.h
