@@ -7,7 +7,7 @@ NAME = Petit Gorille
 
 # *DOCUMENTATION*
 # To see a list of typical targets execute "make help"
-# More info can be located in ./README
+# More info can be located in ./
 # Comments in this file are targeted only to the developer, do not
 # expect to learn how to build the kernel reading this file.
 
@@ -728,27 +728,10 @@ KBUILD_CFLAGS	+= $(call cc-disable-warning, unused-but-set-variable)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, unused-function)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, unused-variable)
 
-KBUILD_CFLAGS += -pipe
-
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS   += -Os
 else
 KBUILD_CFLAGS   += -O2
-endif
-
-ifeq ($(cc-name),clang)
-KBUILD_CFLAGS += -march=armv8.2-a+crypto+crc+lse+dotprod \
-	-mcpu=cortex-a55+crypto+crc+lse+dotprod \
-	-mllvm -inline-threshold=1000 \
-	-mllvm -inlinehint-threshold=1000 \
-	-mllvm -polly \
-	-mllvm -polly-postopts \
-	-mllvm -polly-ast-use-context \
-	-mllvm -polly-ast-detect-parallel \
-	-mllvm -polly-run-inliner \
-	-mllvm -polly-reschedule \
-	-mllvm -polly-loopfusion-greedy \
-	-mllvm -polly-vectorizer=stripmine
 endif
 
 ifdef CONFIG_MINIMAL_TRACING_FOR_IORAP
